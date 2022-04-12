@@ -1,5 +1,18 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <style>
+            table {
+                margin: 20px;
+                border-radius: 3px;
+                background-color: #c1aaaa;
+            }
+
+            td:nth-child(even) {
+                background-color:beige;
+            }
+        </style>
+    </head>
     <body>
     <header></header>
     <nav>
@@ -8,12 +21,33 @@
     <main>
 
         <table>
+            <tbody id="table"></tbody>
         </table>
     </main>
     <footer></footer>
     <script>
         /* turn api data elements into objects, use a for loop to pull objects out for the main table 
         */ 
+        function makeTable(object) {
+            let htmlOutput = "";
+            for (let x = 0; x < object.items.length; x++) {
+                htmlOutput += `<tr>`
+                    +`<td><img src=${object.items[x].image[1]} height="100" width="200"></td>`
+                    + `<td>${object.items[x].itemName}</td>`
+                    + `<td>${object.items[x].price}</td>`
+                    + `<td>${object.items[x].itemBrief}</td>`
+                    + `</tr>`
+            }
+
+            document.getElementById("table").innerHTML = htmlOutput;
+        }
+
+
+        let url = "https://6245f389e3450d61b0f926c1.mockapi.io/api/v1/categories/3/items";
+        fetch(url)
+        .then(res => res.json())
+        .then(json => makeTable(json));
+        
     </script>
     </body>
 </html>
