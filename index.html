@@ -13,14 +13,19 @@
                 border-radius: 10px;
                 background-color: #ebebeb;
 
-                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif "arial";
+                font-family: Arial, Helvetica, sans-serif;
             }
 
-            td:nth-child(even) {
+            td {
+                padding: 10px;
+                border-radius: 5px;
+            }
+
+            tr:nth-child(even) {
                 background-color:rgb(209, 209, 209);
             }
 
-            td:nth-child(odd) {
+            tr:nth-child(odd) {
                 background-color:rgb(159, 159, 159);
             }
         </style>
@@ -48,8 +53,8 @@
                 htmlOutput += `<tr>`
                     +`<td><img src=${object.items[x].image[1]} height="100" width="200"></td>`
                     + `<td>${object.items[x].itemName}</td>`
-                    + `<td>${object.items[x].price}</td>`
                     + `<td>${object.items[x].itemBrief}</td>`
+                    + `<td>${object.items[x].price}</td>`
                     + `</tr>`
             }
 
