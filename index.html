@@ -61,8 +61,10 @@
             document.getElementById("table").innerHTML = htmlOutput;
         }
 
+        let category = parseInt(prompt("Enter Category number (1-5)"));
 
-        let url = "https://6245f389e3450d61b0f926c1.mockapi.io/api/v1/categories/3/items";
+        let url = `https://6245f389e3450d61b0f926c1.mockapi.io/api/v1/categories/${category}/items`;
+
         fetch(url)
         .then(res => res.json())
         .then(json => makeTable(json));
