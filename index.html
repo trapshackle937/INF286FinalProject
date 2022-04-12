@@ -2,19 +2,33 @@
 <html>
     <head>
         <style>
+            h1 {
+                font-family: cursive;
+                text-align: center;
+            }
+
             table {
-                margin: 20px;
-                border-radius: 3px;
-                background-color: #c1aaaa;
+                margin: 30px;
+                padding: 20px;
+                border-radius: 10px;
+                background-color: #ebebeb;
+
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif "arial";
             }
 
             td:nth-child(even) {
-                background-color:beige;
+                background-color:rgb(209, 209, 209);
+            }
+
+            td:nth-child(odd) {
+                background-color:rgb(159, 159, 159);
             }
         </style>
     </head>
     <body>
-    <header></header>
+    <header>
+        <h1>Your Favorite Web Store</h1>
+    </header>
     <nav>
         <input type="radio" id="category" name="category" value="shoes">
     </nav>
@@ -47,7 +61,7 @@
         fetch(url)
         .then(res => res.json())
         .then(json => makeTable(json));
-        
+
     </script>
     </body>
 </html>
