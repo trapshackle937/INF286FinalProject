@@ -16,7 +16,7 @@
                 font-family: Arial, Helvetica, sans-serif;
             }
 
-            td, th {
+            td {
                 padding: 10px;
                 border-radius: 5px;
             }
@@ -42,18 +42,31 @@
         <h1>Your Favorite Web Store</h1>
     </header>
     <nav>
-        <span id="categoryPicker"></span>
+        <label><strong>Filter: </strong></label>
+        <label> 
+            <input type="radio" id="category" name="category" value="books">
+            Books
+        </label>
+        <label> 
+            <input type="radio" id="category" name="category" value="music">
+            Music
+        </label>
+        <label> 
+            <input type="radio" id="category" name="category" value="games">
+            Games
+        </label>
+        <label> 
+            <input type="radio" id="category" name="category" value="shoes">
+            Shoes
+        </label>
+        <label> 
+            <input type="radio" id="category" name="category" value="furniture">
+            Furniture 
+        </label>
     </nav>
     <main>
 
         <table>
-            <thead>
-                <tr>
-                    <th colspan="2" id="item">Item</th>
-                    <th id="desc">Description</th>
-                    <th id="price">Price</th>
-                </tr>
-            </thead>
             <tbody id="table"></tbody>
         </table>
     </main>
@@ -61,24 +74,7 @@
     <script>
         /* turn api data elements into objects, use a for loop to pull objects out for the main table 
         */ 
-
-        let url = `https://6245f389e3450d61b0f926c1.mockapi.io/api/v1/`;
-        let endpoint1 = "categories";
-        //let endpoint2 = `categories/${category}/items`;
-
-        makeNav(); 
-
-        async function getApiData(targetUrl) {
-            try {
-                let connection = await fetch(targetUrl);
-                return await connection.json();
-            } catch (error){
-                console.log(error);
-            }
-        }
-
         function makeTable(object) {
-            
             let htmlOutput = "";
             for (let x = 0; x < object.items.length; x++) {
                 htmlOutput += `<tr>`
@@ -92,27 +88,14 @@
             document.getElementById("table").innerHTML = htmlOutput;
         }
 
-        async function makeNav() {
-            let results = await getApiData(url + endpoint1);
-            let html = `<span>Choose the category you want to view:  </span>`
+        let category = parseInt(prompt("Enter Category number (1-5)"));
 
-            results.forEach(item => {
-                htmlSegment = `<label for=cat${item.id}"><input type="radio" name="selection" id="cat${item.id}" value = "${item.id}">${item.name}</label>`;
-                html += htmlSegment;
-            });
+        let url = `https://6245f389e3450d61b0f926c1.mockapi.io/api/v1/categories/${category}/items`;
 
-            let categoryContainer = document.querySelector('nav');
-            categoryContainer.innerHTML = html;
-        }
-
-       // let category = parseInt(prompt("Enter Category number (1-5)"));
-
-        
-
-       /* fetch(url + endpoint)
+        fetch(url)
         .then(res => res.json())
         .then(json => makeTable(json));
-*/
+
     </script>
     </body>
 </html>
