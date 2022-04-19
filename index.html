@@ -87,13 +87,17 @@
                 html += htmlSegment;
             });
 
-            let categoryContainer = document.getElementById("table");
-            categoryContainer.innerHTML = html;
+            document.getElementById("table").innerHTML = html;
+
+           // let categoryContainer = document.getElementById("table");
+            //categoryContainer.innerHTML = html;
         }
 
 
-        function makeTableOld(object) {
-            
+        async function makeTableOld(category) {
+            let endpoint2 = `categories/${category}/items`;
+            let object = await getApiData(url + endpoint2);
+
             let htmlOutput = "";
             for (let x = 0; x < object.items.length; x++) {
                 htmlOutput += `<tr>`
@@ -107,10 +111,19 @@
             document.getElementById("table").innerHTML = htmlOutput;
         }
 
+        async function makeNav() {
+            let results = await getApiData(url + endpoint1);
+            let html = `<span>Filter: </span>`;
+
             results.forEach(item => {
-                htmlSegment = `<label for=cat${item.id}"><input type="radio" name="selection" id="cat${item.id}" value = "${item.id}" onclick = "makeTable(${item.id})">${item.name}</label>`;
+                htmlSegment = `<label for=cat${item.id}"><input type="radio" name="selection" id="cat${item.id}" value = "${item.id}" onclick = "makeTableOld(${item.id})">${item.name}</label>`;
                 html += htmlSegment;
             });
+
+            let categoryContainer = document.querySelector('nav');
+            categoryContainer.innerHTML = html;
+
+        }
 
     </script>
     </body>
