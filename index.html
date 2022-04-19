@@ -87,7 +87,7 @@
                 html += htmlSegment;
             });
 
-            let categoryContainer = document.querySelector("#table");
+            let categoryContainer = document.getElementById("table");
             categoryContainer.innerHTML = html;
         }
 
@@ -107,16 +107,10 @@
             document.getElementById("table").innerHTML = htmlOutput;
         }
 
-        let category = parseInt(prompt("Enter Category number (1-5)"));
-
             results.forEach(item => {
                 htmlSegment = `<label for=cat${item.id}"><input type="radio" name="selection" id="cat${item.id}" value = "${item.id}" onclick = "makeTable(${item.id})">${item.name}</label>`;
                 html += htmlSegment;
             });
-
-        fetch(url)
-        .then(res => res.json())
-        .then(json => makeTable(json));
 
     </script>
     </body>
