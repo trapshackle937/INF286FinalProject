@@ -77,7 +77,28 @@
             }
         }
 
-        function makeTable(object) {
+
+        async function makeTable(category) {
+            let endpoint2 = `categories/${category}/items`;
+            let results = await getApiData(url + endpoint2);
+            let html = ``;
+
+            results.forEach(item => {
+                htmlSegment = `<tr>`
+                    +`<td><img src=${item.image[1]} height="100" width="200"></td>`
+                    + `<td>${item.itemName}</td>`
+                    + `<td>${item.itemBrief}</td>`
+                    + `<td>${item.price}</td>`
+                    + `</tr>`;
+                html += htmlSegment;
+            });
+
+            let categoryContainer = document.querySelector("#table");
+            categoryContainer.innerHTML = html;
+        }
+
+
+        function makeTableOld(object) {
             
             let htmlOutput = "";
             for (let x = 0; x < object.items.length; x++) {
@@ -97,7 +118,7 @@
             let html = `<span>Filter: </span>`
 
             results.forEach(item => {
-                htmlSegment = `<label for=cat${item.id}"><input type="radio" name="selection" id="cat${item.id}" value = "${item.id}">${item.name}</label>`;
+                htmlSegment = `<label for=cat${item.id}"><input type="radio" name="selection" id="cat${item.id}" value = "${item.id}" onclick = "makeTable(${item.id})">${item.name}</label>`;
                 html += htmlSegment;
             });
 
