@@ -28,6 +28,13 @@
             tr:nth-child(odd) {
                 background-color:rgb(159, 159, 159);
             }
+
+            nav {
+                text-align: center;
+            }
+            label {
+                padding-right: 8%;
+            }
         </style>
     </head>
     <body>
@@ -35,7 +42,27 @@
         <h1>Your Favorite Web Store</h1>
     </header>
     <nav>
-        <input type="radio" id="category" name="category" value="shoes">
+        <label><strong>Filter: </strong></label>
+        <label> 
+            <input type="radio" id="category" name="category" value="books">
+            Books
+        </label>
+        <label> 
+            <input type="radio" id="category" name="category" value="music">
+            Music
+        </label>
+        <label> 
+            <input type="radio" id="category" name="category" value="games">
+            Games
+        </label>
+        <label> 
+            <input type="radio" id="category" name="category" value="shoes">
+            Shoes
+        </label>
+        <label> 
+            <input type="radio" id="category" name="category" value="furniture">
+            Furniture 
+        </label>
     </nav>
     <main>
 
