@@ -94,7 +94,7 @@
 
         async function makeNav() {
             let results = await getApiData(url + endpoint1);
-            let html = `<span>Filter: </span>`
+            let html = `<span>Choose the category you want to view:  </span>`
 
             results.forEach(item => {
                 htmlSegment = `<label for=cat${item.id}"><input type="radio" name="selection" id="cat${item.id}" value = "${item.id}">${item.name}</label>`;
