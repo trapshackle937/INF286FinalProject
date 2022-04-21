@@ -6,9 +6,12 @@
                 font-family: cursive;
                 text-align: center;
             }
-
+          
             table {
-                margin: 30px;
+                width:80%;
+                overflow-wrap: break-word;
+
+                margin: auto;
                 padding: 20px;
                 border-radius: 10px;
                 background-color: #ebebeb;
@@ -30,7 +33,14 @@
             }
 
             nav {
+                width:80%;
                 text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 20px;
+                padding: 20px;
+                border-radius: 5px;
+                border: 3px black solid;
             }
             label {
                 padding-right: 8%;
@@ -56,7 +66,7 @@
                 </tr>
             <tbody id="table">
                 <tr>
-                    <td rowspan = 4 colspan = 4>Select a category above</td>
+                    <td rowspan = 4 colspan = 4 style="text-align:center">Select a category above</td>
                 </tr>
             </tbody>
         </table>
@@ -111,10 +121,10 @@
             let htmlOutput = "";
             for (let x = 0; x < object.items.length; x++) {
                 htmlOutput += `<tr>`
-                    +`<td><img src=${object.items[x].image[1]} height="100" width="200"></td>`
+                    +`<td><img src=${object.items[x].image[1]} height="90" width="160"></td>`
                     + `<td>${object.items[x].itemName}</td>`
                     + `<td>${object.items[x].itemBrief}</td>`
-                    + `<td>${object.items[x].price}</td>`
+                    + `<td>$${object.items[x].price}</td>`
                     + `</tr>`
             }
 
