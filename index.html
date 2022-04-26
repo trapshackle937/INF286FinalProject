@@ -56,20 +56,26 @@
         
     </nav>
     <main>
+        <div id="itemView">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">item</th>
+                        <th>description</th>
+                        <th>price</th></thead>
+                    </tr>
+                <tbody id="table">
+                    <tr>
+                        <td rowspan = 4 colspan = 4 style="text-align:center">Select a category above</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-        <table>
-            <thead>
-                <tr>
-                    <th colspan="2">item</th>
-                    <th>description</th>
-                    <th>price</th></thead>
-                </tr>
-            <tbody id="table">
-                <tr>
-                    <td rowspan = 4 colspan = 4 style="text-align:center">Select a category above</td>
-                </tr>
-            </tbody>
-        </table>
+        
+        <div id="itemView">
+            <!--- item view here--->
+        </div>
     </main>
     <footer></footer>
     <script>
@@ -133,7 +139,7 @@
 
         async function makeNav() {
             let results = await getApiData(url + endpoint1);
-            let html = `<span>Filter: </span>`;
+            let html = `<span id="categories">Filter: </span>`;
 
             results.forEach(item => {
                 htmlSegment = `<label for=cat${item.id}"><input type="radio" name="selection" id="cat${item.id}" value = "${item.id}" onclick = "makeTableOld(${item.id})">${item.name}</label>`;
@@ -143,6 +149,13 @@
             let categoryContainer = document.querySelector('nav');
             categoryContainer.innerHTML = html;
 
+        }
+
+        function hideItem() {
+            console.log('got hideItem()');
+            document.getElementById("itemView").style.display="none";
+            document.getElementById("categories").style.display="block";
+            document.getElementById("listView").style.display="block";
         }
 
     </script>
