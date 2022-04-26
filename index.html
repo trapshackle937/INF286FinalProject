@@ -120,7 +120,8 @@
         }
         */
 
-        async function makeTableOld(category) {
+        async function makeTable(category) {
+            console.log('got makeTable()');
             let endpoint2 = `categories/${category}/items`;
             let object = await getApiData(url + endpoint2);
 
@@ -138,11 +139,12 @@
         }
 
         async function makeNav() {
+            console.log('got makeNav()');
             let results = await getApiData(url + endpoint1);
             let html = `<span id="categories">Filter: </span>`;
 
             results.forEach(item => {
-                htmlSegment = `<label for=cat${item.id}"><input type="radio" name="selection" id="cat${item.id}" value = "${item.id}" onclick = "makeTableOld(${item.id})">${item.name}</label>`;
+                htmlSegment = `<label for=cat${item.id}"><input type="radio" name="selection" id="cat${item.id}" value = "${item.id}" onclick = "makeTable(${item.id})">${item.name}</label>`;
                 html += htmlSegment;
             });
 
@@ -156,6 +158,13 @@
             document.getElementById("itemView").style.display="none";
             document.getElementById("categories").style.display="block";
             document.getElementById("listView").style.display="block";
+        }
+
+        function showItem() {
+            console.log('got showItem()');
+            document.getElementById("itemView").style.display="block";
+            document.getElementById("categories").style.display="none";
+            document.getElementById("listView").style.display="none";
         }
 
     </script>
