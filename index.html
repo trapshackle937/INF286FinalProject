@@ -2,12 +2,53 @@
 <html>
     <head>
         <style>
+            h1 {
+                font-family: cursive;
+                text-align: center;
+            }
+            
+            table {
+                width:80%;
+                overflow-wrap: break-word;
 
+                margin: auto;
+                padding: 20px;
+                border-radius: 10px;
+                background-color: #ebebeb;
+
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            td {
+                padding: 10px;
+                border-radius: 5px;
+            }
+
+            tr:nth-child(even) {
+                background-color:rgb(209, 209, 209);
+            }
+
+            tr:nth-child(odd) {
+                background-color:rgb(159, 159, 159);
+            }
+
+            nav {
+                width:80%;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 20px;
+                padding: 20px;
+                border-radius: 5px;
+                border: 3px black solid;
+            }
+
+            label {
+                padding-right: 8%;
+            }
 
             @media (max-width:480px) {
-                
 
-                
                 table,
                 table thead,
                 table tbody,
@@ -15,66 +56,11 @@
                 table td,
                 table tr {
                     display: block;
-                }
-
-
-                tr:nth-child(even) {
-                    background-color:rgb(209, 209, 209);
-                }
-
-                tr:nth-child(odd) {
-                    background-color:rgb(159, 159, 159);
-                }
-
-                nav {
                     width:100%;
-                    text-align: center;
-                    margin-left: auto;
-                    margin-right: auto;
-                    margin-bottom: 20px;
-                    padding: 20px;
-                    border-radius: 5px;
-                    border: 3px black solid;
-                }
-                label {
-                    padding-right: 8%;
                 }
             }
         
-            /*
-            @media (min-width: 481px) {
-
-                h1 {
-                    font-family: cursive;
-                    text-align: center;
-                }
-          
-                table {
-                    width:80%;
-                    overflow-wrap: break-word;
-
-                    margin: auto;
-                    padding: 20px;
-                    border-radius: 10px;
-                    background-color: #ebebeb;
-
-                    font-family: Arial, Helvetica, sans-serif;
-                }
-
-                td {
-                    padding: 10px;
-                    border-radius: 5px;
-                }
-
-                table,
-                table thead,
-                table tbody,
-                table th,
-                table td,
-                table tr {
-                    display: block;
-                }
-            }
+            
            
 
            
