@@ -2,13 +2,19 @@
 <html>
     <head>
         <style>
+            #wrapper {
+                margin-left:auto;
+                margin-right: auto;
+                width:80%;
+            }
+
             h1 {
                 font-family: cursive;
                 text-align: center;
             }
             
             table {
-                width:80%;
+                
                 overflow-wrap: break-word;
 
                 margin: auto;
@@ -49,6 +55,8 @@
 
             @media (max-width:480px) {
 
+                #wrapper {width: 100%}
+
                 table,
                 table thead,
                 table tbody,
@@ -56,7 +64,6 @@
                 table td,
                 table tr {
                     display: block;
-                    width:100%;
                 }
             }
         
@@ -68,42 +75,43 @@
         </style>
     </head>
     <body>
-    <header>
-        <h1>Your Favorite Web Store</h1>
-    </header>
-    <nav>
-        
-    </nav>
-    <main>
-        <div id="itemView">
-            <table>
-                <thead>
-                    <tr>
-                        <th colspan="2">item</th>
-                        <th>description</th>
-                        <th>price</th></thead>
-                    </tr>
-                <tbody id="table">
-                    <tr>
-                        <td rowspan = 4 colspan = 4 style="text-align:center">Select a category above</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div id="wrapper">
+        <header>
+            <h1>Your Favorite Web Store</h1>
+        </header>
+        <nav>
+            
+        </nav>
+        <main>
+            <div id="listView">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="2">item</th>
+                            <th>description</th>
+                            <th>price</th></thead>
+                        </tr>
+                    <tbody id="table">
+                        <tr>
+                            <td rowspan = 4 colspan = 4 style="text-align:center">Select a category above</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-        
-        <div id="itemView">
-            <!--- item view here--->
-        </div>
-    </main>
-    <footer></footer>
+            
+            <div id="itemView">
+                <!--- item view here--->
+            </div>
+        </main>
+        <footer></footer>
+    </div>
     <script>
         /* turn api data elements into objects, use a for loop to pull objects out for the main table 
         */ 
 
         let url = `https://6245f389e3450d61b0f926c1.mockapi.io/api/v1/`;
         let endpoint1 = "categories";
-        //let endpoint2 = `categories/${category}/items`;
 
         makeNav(); 
 
@@ -115,29 +123,6 @@
                 console.log(error);
             }
         }
-
-
-        /*async function makeTable(category) {
-            let endpoint2 = `categories/${category}/items`;
-            let results = await getApiData(url + endpoint2);
-            let html = ``;
-
-            results.forEach(item => {
-                htmlSegment = `<tr>`
-                    +`<td><img src=${item.image[1]} height="100" width="200"></td>`
-                    + `<td>${item.itemName}</td>`
-                    + `<td>${item.itemBrief}</td>`
-                    + `<td>${item.price}</td>`
-                    + `</tr>`;
-                html += htmlSegment;
-            });
-
-            document.getElementById("table").innerHTML = html;
-
-           // let categoryContainer = document.getElementById("table");
-            //categoryContainer.innerHTML = html;
-        }
-        */
 
         async function makeTable(category) {
             console.log('got makeTable()');
