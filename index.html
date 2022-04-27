@@ -13,7 +13,7 @@
                 text-align: center;
             }
             
-            table {
+            #listView table {
                 
                 overflow-wrap: break-word;
 
@@ -25,16 +25,21 @@
                 font-family: Arial, Helvetica, sans-serif;
             }
 
-            td {
+            #listView img {
+                aspect-ratio: 5/4;
+                width: auto;
+            }
+
+            #listView td {
                 padding: 10px;
                 border-radius: 5px;
             }
 
-            tr:nth-child(even) {
+           #listView tr:nth-child(even) {
                 background-color:rgb(209, 209, 209);
             }
 
-            tr:nth-child(odd) {
+            #listView tr:nth-child(odd) {
                 background-color:rgb(159, 159, 159);
             }
 
@@ -62,11 +67,15 @@
                 clear: both;
             }
 
+            #itemView{
+                display: none;
+            }
+
             #itemView_price {
                 float:  right;
             }
 
-            #itemview h1 {
+            #itemView h1 {
                 border-bottom: solid 2px black;
             }
 
@@ -85,6 +94,13 @@
                 height: 75px;
                 width: 75px;
                 padding-right: 10px;
+            }
+
+            #img0 {
+                margin-left: auto;
+                margin-right: auto;
+                width: 90%;
+                aspect-ratio: 5/4;
             }
 
             @media (max-width:480px) {
@@ -138,43 +154,41 @@
                 <h1><span id="itemView_item">Item Name</span><span id="itemView_price">$0.00</span></h1>
                 <div class="row">
                     <div id="column1" class="column">
-                        <img src="Placeholder_pic.png">
+                        <img id="img0"src="Placeholder_pic.png">
                         <table>
                             <tr>
-                                <td><img src="Placeholder_pic.png"></td>
-                                <td><img src="Placeholder_pic.png"></td>
-                                <td><img src="Placeholder_pic.png"></td>
+                                <td><img id="img1" src="Placeholder_pic.png"></td>
+                                <td><img id="img2" src="Placeholder_pic.png"></td>
+                                <td><img id="img3" src="Placeholder_pic.png"></td>
                             </tr>
                         </table>
                     </div>
                     <div id="column2" class="column">
-                        <p>This is text.This is text.This is text.This is text.This is text.This is text.This is text.This is text.</p>
+                        <p id="itemDesc">This is text.This is text.This is text.This is text.This is text.This is text.This is text.This is text.</p>
                         <fieldset>
                             <label>Size:                   
-                                <select name="" id="" size="1" required>
+                                <select name="size" id="sizeList" size="1" required>
                                     <option disabled selected label = " "></option>
-                                    <option value="" label=""></option>
+                                    
                                 </select>
                             </label>
                         </fieldset>
                         <fieldset>
                             <label>Color:
-                                <select name="" id="" size="1" required>
+                                <select name="color" id="colorList" size="1" required>
                                     <option disabled selected label = " "></option>
-                                    <option value="" label=""></option>
                                 </select>
                             </label>
                         </fieldset>
                         <fieldset>
                             <label>Qty:
-                                <select name="" id="" size="1" required>
+                                <select name="qty" id="qtyList" size="1" required>
                                     <option disabled selected label = " "></option>
-                                    <option value="" label=""></option>
                                 </select>
                             </label>
                         </fieldset>
                         <div id="itemAction">
-                            <button id="button">Buy Now!</button>
+                            <button onclick="hideItem()" id="button">Buy Now!</button>
                         </div> 
             </div>
         </main>
@@ -205,7 +219,7 @@
 
             let htmlOutput = "";
             for (let x = 0; x < object.items.length; x++) {
-                htmlOutput += `<tr>`
+                htmlOutput += `<tr onclick = "updateItem(${object.items[x].categoryId}, ${object.items[x].itemId})">`
                     +`<td><img src=${object.items[x].image[1]} height="90" width="160"></td>`
                     + `<td>${object.items[x].itemName}</td>`
                     + `<td>${object.items[x].itemBrief}</td>`
@@ -231,17 +245,64 @@
 
         }
 
+        async function updateItem(category, item) {
+
+            showItem();
+            console.log('got updateItem');
+            let endpoint3 = `categories/${category}/items/${item}/`
+
+            let result = await getApiData(url + endpoint3);
+            console.log(result);
+
+            document.getElementById("itemView_item").innerHTML = result.itemName;
+            document.getElementById("itemView_price").innerHTML = "$" + result.price;
+            document.getElementById("itemDesc").innerHTML = result.itemFull;
+
+            for (let x = 0; x < 4; x++) {
+                document.getElementById(`img${x}`).src = result.image[x];
+            }
+
+            document.getElementById("sizeList").innerHTML = `<option disabled selected label = " "></option>`;
+
+            result.size.forEach(itemSize => {
+                sizeOption = document.createElement('option');
+                sizeOption.label = itemSize;
+                sizeOption.value = itemSize;
+                document.getElementById("sizeList").appendChild(sizeOption);
+            });
+
+            document.getElementById("colorList").innerHTML = `<option disabled selected label = " "></option>`;
+
+            result.colors.forEach(itemColor => {
+                colorOption = document.createElement('option');
+                colorOption.label = itemColor;
+                colorOption.value = itemColor;
+                document.getElementById("colorList").appendChild(colorOption);
+            });
+
+            document.getElementById("qtyList").innerHTML = `<option disabled selected label = " "></option>`;
+
+            for (let x = 1; x < 11; x++) {
+                qtyOption = document.createElement('option');
+                qtyOption.label = x;
+                qtyOption.value = x;
+                document.getElementById("qtyList").appendChild(qtyOption);
+            }
+
+
+        }
+
         function hideItem() {
             console.log('got hideItem()');
             document.getElementById("itemView").style.display="none";
-            document.getElementById("categories").style.display="block";
+            document.querySelector("nav").style.display="block";
             document.getElementById("listView").style.display="block";
         }
 
         function showItem() {
             console.log('got showItem()');
             document.getElementById("itemView").style.display="block";
-            document.getElementById("categories").style.display="none";
+            document.querySelector("nav").style.display="none";
             document.getElementById("listView").style.display="none";
         }
 
