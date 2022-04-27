@@ -53,6 +53,40 @@
                 padding-right: 8%;
             }
 
+            #column1 {
+                float: left;
+                width: 50%;
+            }
+            
+            .clear {
+                clear: both;
+            }
+
+            #itemView_price {
+                float:  right;
+            }
+
+            #itemview h1 {
+                border-bottom: solid 2px black;
+            }
+
+            #itemView fieldset {
+                border: none;
+            }
+
+            #button {
+                float: right;
+            }
+
+            #itemView label {
+                font-weight: bold;
+            }
+            #itemView td img{
+                height: 75px;
+                width: 75px;
+                padding-right: 10px;
+            }
+
             @media (max-width:480px) {
 
                 #wrapper {width: 100%}
@@ -101,7 +135,47 @@
 
             
             <div id="itemView">
-                <!--- item view here--->
+                <h1><span id="itemView_item">Item Name</span><span id="itemView_price">$0.00</span></h1>
+                <div class="row">
+                    <div id="column1" class="column">
+                        <img src="Placeholder_pic.png">
+                        <table>
+                            <tr>
+                                <td><img src="Placeholder_pic.png"></td>
+                                <td><img src="Placeholder_pic.png"></td>
+                                <td><img src="Placeholder_pic.png"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="column2" class="column">
+                        <p>This is text.This is text.This is text.This is text.This is text.This is text.This is text.This is text.</p>
+                        <fieldset>
+                            <label>Size:                   
+                                <select name="" id="" size="1" required>
+                                    <option disabled selected label = " "></option>
+                                    <option value="" label=""></option>
+                                </select>
+                            </label>
+                        </fieldset>
+                        <fieldset>
+                            <label>Color:
+                                <select name="" id="" size="1" required>
+                                    <option disabled selected label = " "></option>
+                                    <option value="" label=""></option>
+                                </select>
+                            </label>
+                        </fieldset>
+                        <fieldset>
+                            <label>Qty:
+                                <select name="" id="" size="1" required>
+                                    <option disabled selected label = " "></option>
+                                    <option value="" label=""></option>
+                                </select>
+                            </label>
+                        </fieldset>
+                        <div id="itemAction">
+                            <button id="button">Buy Now!</button>
+                        </div> 
             </div>
         </main>
         <footer></footer>
