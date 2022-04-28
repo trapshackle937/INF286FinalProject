@@ -252,7 +252,6 @@
 
         async function updateItem(category, item) {
 
-            showItem();
             console.log('got updateItem');
             let endpoint3 = `categories/${category}/items/${item}/`
 
@@ -294,6 +293,7 @@
                 document.getElementById("qtyList").appendChild(qtyOption);
             }
 
+            showItem();
 
         }
 
