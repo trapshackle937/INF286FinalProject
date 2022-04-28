@@ -115,9 +115,14 @@
                 padding: 10px;
                 margin: 15px;
             }
+
             #color{
                 background-color: rgb(164, 227, 220);
                 padding-bottom: 300px;
+            }
+
+            .smallImgHover:hover {
+                opacity: 0.5;
             }
             @media (max-width:480px) {
 
@@ -307,7 +312,7 @@
             let galleryHtml = "";
             let counter = 0;
             result.image.forEach(imageUrl => {
-                galleryHtml += `<td><img id="img${counter}" src = "${imageUrl}" onclick="switchImage(${counter})"></td>`
+                galleryHtml += `<td><img id="img${counter}" class = "smallImgHover"src = "${imageUrl}" onclick="switchImage(${counter})"></td>`
                 counter++;
             });
             document.getElementById("smallImagesRow").innerHTML = galleryHtml;
