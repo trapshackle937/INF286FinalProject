@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <title>Fuckboi Emporium</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
 
 
             #wrapper {
                 margin-left:auto;
                 margin-right: auto;
-                width:80%;
+                width: 80%;
             }
 
             header h1 {
@@ -101,7 +104,7 @@
                 padding-right: 10px;
             }
 
-            #img0 {
+            #imgBig {
                 margin-left: auto;
                 margin-right: auto;
                 width: 90%;
@@ -127,6 +130,16 @@
                 table td,
                 table tr {
                     display: block;
+                }
+
+                #itemView table,
+                #itemView td {
+                    display :inline;
+                }
+                
+                #column1 {
+                    float:none;
+                    width:100%;
                 }
             }
 
@@ -170,9 +183,10 @@
                 <h1><span id="itemView_item">Item Name</span><span id="itemView_price">$0.00</span></h1>
                 <div class="row">
                     <div id="column1" class="column">
-                        <img id="img0"src="Placeholder_pic.png">
+                        <img id="imgBig"src="Placeholder_pic.png">
                         <table id="smallImages">
-                            <tr>
+                            <tr id="smallImagesRow">
+                                <td><img id="img0" src="Placeholder_pic.png"></td>
                                 <td><img id="img1" src="Placeholder_pic.png"></td>
                                 <td><img id="img2" src="Placeholder_pic.png"></td>
                                 <td><img id="img3" src="Placeholder_pic.png"></td>
@@ -262,6 +276,13 @@
 
         }
 
+        function switchImage(counter) {
+            url = document.getElementById(`img${counter}`).src;
+            document.getElementById("imgBig").src = url;
+        }
+
+      
+
         async function updateItem(category, item) {
 
             console.log('got updateItem');
@@ -274,9 +295,23 @@
             document.getElementById("itemView_price").innerHTML = "$" + result.price;
             document.getElementById("itemDesc").innerHTML = result.itemFull;
 
+
+            //set default
+            document.getElementById("imgBig").src = result.image[0];
+
+            /*
             for (let x = 0; x < 4; x++) {
                 document.getElementById(`img${x}`).src = result.image[x];
-            }
+            } */
+
+            let galleryHtml = "";
+            let counter = 0;
+            result.image.forEach(imageUrl => {
+                galleryHtml += `<td><img id="img${counter}" src = "${imageUrl}" onclick="switchImage(${counter})"></td>`
+                counter++;
+            });
+            document.getElementById("smallImagesRow").innerHTML = galleryHtml;
+            
 
             document.getElementById("sizeList").innerHTML = `<option disabled selected label = " "></option>`;
 
