@@ -112,7 +112,10 @@
                 padding: 10px;
                 margin: 15px;
             }
-
+            #color{
+                background-color: rgb(164, 227, 220);
+                padding-bottom: 300px;
+            }
             @media (max-width:480px) {
 
                 #wrapper {width: 100%}
@@ -126,6 +129,7 @@
                     display: block;
                 }
             }
+
         
             
            
@@ -161,6 +165,7 @@
 
             
             <div id="itemView">
+                <div id ="color">
                 <div id="xButton"><button onclick="hideItem()" id="button">X</button></div>
                 <h1><span id="itemView_item">Item Name</span><span id="itemView_price">$0.00</span></h1>
                 <div class="row">
@@ -202,6 +207,7 @@
                             <button onclick="hideItem()" id="button">Buy Now!</button>
                         </div> 
             </div>
+        </div>
         </main>
         <footer></footer>
     </div>
@@ -308,6 +314,7 @@
             document.getElementById("itemView").style.display="none";
             document.querySelector("nav").style.display="block";
             document.getElementById("listView").style.display="block";
+            document.getElementById("color").style.display="none";
         }
 
         function showItem() {
@@ -315,6 +322,7 @@
             document.getElementById("itemView").style.display="block";
             document.querySelector("nav").style.display="none";
             document.getElementById("listView").style.display="none";
+            document.getElementById("color").style.display="block";
         }
 
     </script>
