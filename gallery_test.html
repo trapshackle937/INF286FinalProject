@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+
+
+            #wrapper {
+                margin-left:auto;
+                margin-right: auto;
+                width:80%;
+            }
+
+            header h1 {
+                font-family: cursive;
+                text-align: center;
+            }
+            
+            #listView table {
+                
+                overflow-wrap: break-word;
+
+                margin: auto;
+                padding: 20px;
+                border-radius: 10px;
+                background-color: #ebebeb;
+
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            #listView img {
+                aspect-ratio: 5/4;
+                width: auto;
+            }
+
+            #listView td {
+                padding: 10px;
+                border-radius: 5px;
+            }
+
+           #listView tr:nth-child(even) {
+                background-color:rgb(209, 209, 209);
+            }
+
+            #listView tr:nth-child(odd) {
+                background-color:rgb(159, 159, 159);
+            }
+
+            nav {
+                width:80%;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 20px;
+                padding: 20px;
+                border-radius: 5px;
+                border: 3px black solid;
+            }
+
+            label {
+                padding-right: 8%;
+            }
+
+            #column1 {
+                float: left;
+                width: 50%;
+            }
+            
+            .clear {
+                clear: both;
+            }
+
+            #itemView{
+                display: none;
+            }
+
+            #itemView_price {
+                float:  right;
+            }
+
+            #itemView h1 {
+                border-bottom: solid 2px black;
+            }
+
+            #itemView fieldset {
+                border: none;
+            }
+
+            #button {
+                float: right;
+            }
+
+            #itemView label {
+                font-weight: bold;
+            }
+
+            #itemView td img{
+                aspect-ratio: 5/4;
+                height: 100px;
+                padding-right: 10px;
+            }
+
+            #img0 {
+                margin-left: auto;
+                margin-right: auto;
+                width: 90%;
+                aspect-ratio: 5/4;
+            }
+
+            @media (max-width:480px) {
+
+                #wrapper {width: 100%}
+
+                table,
+                table thead,
+                table tbody,
+                table th,
+                table td,
+                table tr {
+                    display: block;
+                }
+            }
+
+            .column {
+                float: left;
+                width: 25%;
+                padding: 10px;
+            }
+
+            /* Style the images inside the grid */
+            .column img {
+            opacity: 0.8;
+            cursor: pointer;
+            }
+
+            .column img:hover {
+            opacity: 1;
+            }
+
+            /* Clear floats after the columns */
+            .row:after {
+            content: "";
+            display: table;
+            clear: both;
+            }
+
+            /* The expanding image container (positioning is needed to position the close button and the text) */
+            .container {
+            position: relative;
+            display: none;
+            }
+
+            /* Expanding image text */
+            #imgtext {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            color: white;
+            font-size: 20px;
+            }
+
+            /* Closable button inside the image */
+            .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: white;
+            font-size: 35px;
+            cursor: pointer;
+            }
+        
+            
+           
+
+           
+        /* add a label around the table so that once a category is clicked the nav is hidden, table items are hidden, specific item is shown */ 
+        </style>
+    </head>
+    <body>
+    <div id="wrapper">
+        <header>
+            <h1>Fuckboi Emporium</h1>
+        </header>
+        <nav>
+            
+        </nav>
+        <main>
+            <div id="listView">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="2">item</th>
+                            <th>description</th>
+                            <th>price</th></thead>
+                        </tr>
+                    <tbody id="table">
+                        <tr>
+                            <td rowspan = 4 colspan = 4 style="text-align:center">Select a category above</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            
+            <div id="itemView">
+                <h1><span id="itemView_item">Item Name</span><span id="itemView_price">$0.00</span></h1>
+                <div class="row">
+                    <div id="column1" class="column">
+                        <img id="img0"src="Placeholder_pic.png">
+                        <table id="smallImages">
+                            <tr>
+                                <td><img id="img1" src="Placeholder_pic.png" alt="img_1" onclick="myFunction(imgs)"></td>
+                                <td><img id="img2" src="Placeholder_pic.png" alt="img_2" onclick="myFunction(imgs)" ></td>
+                                <td><img id="img3" src="Placeholder_pic.png" alt="img_3" onclick="myFunction(imgs)"></td>
+                            </tr>
+                            <div class="container">
+                                <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+                                <img id="expandedImg" style="width:100%">
+                                <div id="imgtext"></div>
+                            </div>
+                        </table>
+                    </div>
+                    <div id="column2" class="column">
+                        <p id="itemDesc">This is text.This is text.This is text.This is text.This is text.This is text.This is text.This is text.</p>
+                        <fieldset>
+                            <label>Size:                   
+                                <select name="size" id="sizeList" size="1" required>
+                                    <option disabled selected label = " "></option>
+                                    
+                                </select>
+                            </label>
+                        </fieldset>
+                        <fieldset>
+                            <label>Color:
+                                <select name="color" id="colorList" size="1" required>
+                                    <option disabled selected label = " "></option>
+                                </select>
+                            </label>
+                        </fieldset>
+                        <fieldset>
+                            <label>Qty:
+                                <select name="qty" id="qtyList" size="1" required>
+                                    <option disabled selected label = " "></option>
+                                </select>
+                            </label>
+                        </fieldset>
+                        <div id="itemAction">
+                            <button onclick="hideItem()" id="button">Buy Now!</button>
+                        </div> 
+            </div>
+        </main>
+        <footer></footer>
+    </div>
+    <script>
+        /* turn api data elements into objects, use a for loop to pull objects out for the main table 
+        */ 
+
+        let url = `https://6245f389e3450d61b0f926c1.mockapi.io/api/v1/`;
+        let endpoint1 = "categories";
+
+        makeNav(); 
+
+        async function getApiData(targetUrl) {
+            try {
+                let connection = await fetch(targetUrl);
+                return await connection.json();
+            } catch (error){
+                console.log(error);
+            }
+        }
+
+        async function makeTable(category) {
+            console.log('got makeTable()');
+            let endpoint2 = `categories/${category}/items`;
+            let object = await getApiData(url + endpoint2);
+
+            let htmlOutput = "";
+            for (let x = 0; x < object.items.length; x++) {
+                htmlOutput += `<tr onclick = "updateItem(${object.items[x].categoryId}, ${object.items[x].itemId})">`
+                    +`<td><img src=${object.items[x].image[1]} height="90" width="160"></td>`
+                    + `<td>${object.items[x].itemName}</td>`
+                    + `<td>${object.items[x].itemBrief}</td>`
+                    + `<td>$${object.items[x].price}</td>`
+                    + `</tr>`
+            }
+
+            document.getElementById("table").innerHTML = htmlOutput;
+        }
+
+        async function makeNav() {
+            console.log('got makeNav()');
+            let results = await getApiData(url + endpoint1);
+            let html = `<span id="categories">Filter: </span>`;
+
+            results.forEach(item => {
+                htmlSegment = `<label for=cat${item.id}"><input type="radio" name="selection" id="cat${item.id}" value = "${item.id}" onclick = "makeTable(${item.id})">${item.name}</label>`;
+                html += htmlSegment;
+            });
+
+            let categoryContainer = document.querySelector('nav');
+            categoryContainer.innerHTML = html;
+
+        }
+
+        async function updateItem(category, item) {
+
+            showItem();
+            console.log('got updateItem');
+            let endpoint3 = `categories/${category}/items/${item}/`
+
+            let result = await getApiData(url + endpoint3);
+            console.log(result);
+
+            document.getElementById("itemView_item").innerHTML = result.itemName;
+            document.getElementById("itemView_price").innerHTML = "$" + result.price;
+            document.getElementById("itemDesc").innerHTML = result.itemFull;
+
+            for (let x = 0; x < 4; x++) {
+                document.getElementById(`img${x}`).src = result.image[x];
+            }
+
+            document.getElementById("sizeList").innerHTML = `<option disabled selected label = " "></option>`;
+
+            result.size.forEach(itemSize => {
+                sizeOption = document.createElement('option');
+                sizeOption.label = itemSize;
+                sizeOption.value = itemSize;
+                document.getElementById("sizeList").appendChild(sizeOption);
+            });
+
+            document.getElementById("colorList").innerHTML = `<option disabled selected label = " "></option>`;
+
+            result.colors.forEach(itemColor => {
+                colorOption = document.createElement('option');
+                colorOption.label = itemColor;
+                colorOption.value = itemColor;
+                document.getElementById("colorList").appendChild(colorOption);
+            });
+
+            document.getElementById("qtyList").innerHTML = `<option disabled selected label = " "></option>`;
+
+            for (let x = 1; x < 11; x++) {
+                qtyOption = document.createElement('option');
+                qtyOption.label = x;
+                qtyOption.value = x;
+                document.getElementById("qtyList").appendChild(qtyOption);
+            }
+
+
+        }
+
+        function hideItem() {
+            console.log('got hideItem()');
+            document.getElementById("itemView").style.display="none";
+            document.querySelector("nav").style.display="block";
+            document.getElementById("listView").style.display="block";
+        }
+
+        function showItem() {
+            console.log('got showItem()');
+            document.getElementById("itemView").style.display="block";
+            document.querySelector("nav").style.display="none";
+            document.getElementById("listView").style.display="none";
+        }
+
+        function myFunction(imgs) {
+        // Get the expanded image
+        var expandImg = document.getElementById("expandedImg");
+        // Get the image text
+        var imgText = document.getElementById("imgtext");
+        // Use the same src in the expanded image as the image being clicked on from the grid
+        expandImg.src = imgs.src;
+        // Use the value of the alt attribute of the clickable image as text inside the expanded image
+        imgText.innerHTML = imgs.alt;
+        // Show the container element (hidden with CSS)
+        expandImg.parentElement.style.display = "block";
+        }
+
+    </script>
+    </body>
+</html>
