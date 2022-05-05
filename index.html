@@ -5,8 +5,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-
-
+            body{
+                margin: 0;
+            }
             #wrapper {
                 margin-left:auto;
                 margin-right: auto;
@@ -19,11 +20,8 @@
             }
             
             #listView table {
-                
                 overflow-wrap: break-word;
-
                 width: 100%;
-
                 margin: auto;
                 padding: 20px;
                 border-radius: 10px;
@@ -49,12 +47,13 @@
             #listView tr:nth-child(odd) {
                 background-color:rgba(241, 219, 219, 0.877);
             }
+
             th{
                 background-color:rgb(209, 209, 209);
             }
 
             nav {
-                width:80%;
+                width: 80%;
                 text-align: center;
                 margin-left: auto;
                 margin-right: auto;
@@ -77,7 +76,7 @@
                 clear: both;
             }
 
-            #itemView{
+            #itemView {
                 display: none;
             }
 
@@ -101,7 +100,7 @@
                 font-weight: bold;
             }
 
-            #itemView td img{
+            #img0, #img1, #img2, #img3 {
                 aspect-ratio: 5/4;
                 height: 100px;
                 padding-right: 10px;
@@ -110,7 +109,7 @@
             #imgBig {
                 margin-left: auto;
                 margin-right: auto;
-                width: 90%;
+                width: 100%;
                 aspect-ratio: 5/4;
             }
 
@@ -129,6 +128,10 @@
             .smallImgHover:hover {
                 opacity: 0.5;
             }
+
+            p {
+                padding-left: 52%;
+            }
             @media (max-width:480px) {
                 #wrapper {width: 100%}
                 table,
@@ -143,6 +146,7 @@
                 #itemView td {
                     display :inline;
                 }
+
                 #column1 {
                     float:none;
                     width:100%;
@@ -184,16 +188,18 @@
                 <h1><span id="itemView_item">Item Name</span><span id="itemView_price">$0.00</span></h1>
                 <div class="row">
                     <div id="column1" class="column">
-                        <img id="imgBig"src="Placeholder_pic.png">
-                        <table id="smallImages">
-                            <tr id="smallImagesRow">
-                                <td><img id="img0" src="Placeholder_pic.png"></td>
-                                <td><img id="img1" src="Placeholder_pic.png"></td>
-                                <td><img id="img2" src="Placeholder_pic.png"></td>
-                                <td><img id="img3" src="Placeholder_pic.png"></td>
-                            </tr>
-                        </table>
+                        <img id="imgBig" src="Placeholder_pic.png">
+                        <div id="smallImages">
+                            <div id="smallImagesRow">
+                                <img id="img0" src="Placeholder_pic.png">
+                                <img id="img1" src="Placeholder_pic.png">
+                                <img id="img2" src="Placeholder_pic.png">
+                                <img id="img3" src="Placeholder_pic.png">
+                            </div>
+                        </div>
                     </div>
+                    </div>
+
                     <div id="column2" class="column">
                         <p id="itemDesc">This is text.This is text.This is text.This is text.This is text.This is text.This is text.This is text.</p>
                         <fieldset>
