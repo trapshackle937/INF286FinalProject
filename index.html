@@ -134,14 +134,25 @@
             }
             @media (max-width:480px) {
                 #wrapper {width: 100%}
+
                 table,
                 table thead,
                 table tbody,
-                table th,
                 table td,
                 table tr {
                     display: block;
                 }
+
+                #listView img {
+                    aspect-ratio: 5/4;
+                    
+                    width: 100%;
+                    height: auto;
+                }
+
+
+                th {display: none;}
+
                 #itemView table,
                 #itemView td {
                     display :inline;
