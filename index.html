@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Fuckboi Emporium</title>
+        <title>JScript Emporium</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
@@ -47,7 +47,10 @@
             }
 
             #listView tr:nth-child(odd) {
-                background-color:rgb(159, 159, 159);
+                background-color:rgba(241, 219, 219, 0.877);
+            }
+            th{
+                background-color:rgb(209, 209, 209);
             }
 
             nav {
@@ -120,14 +123,14 @@
                 background-color: rgb(164, 227, 220);
                 padding-bottom: 300px;
             }
-
+            label{
+                white-space: nowrap;
+            }
             .smallImgHover:hover {
                 opacity: 0.5;
             }
             @media (max-width:480px) {
-
                 #wrapper {width: 100%}
-
                 table,
                 table thead,
                 table tbody,
@@ -136,22 +139,15 @@
                 table tr {
                     display: block;
                 }
-
                 #itemView table,
                 #itemView td {
                     display :inline;
                 }
-                
                 #column1 {
                     float:none;
                     width:100%;
                 }
             }
-
-        
-            
-           
-
            
         /* add a label around the table so that once a category is clicked the nav is hidden, table items are hidden, specific item is shown */ 
         </style>
@@ -159,7 +155,7 @@
     <body>
     <div id="wrapper">
         <header>
-            <h1>Fuckboi Emporium</h1>
+            <h1>JScript Emporium</h1>
         </header>
         <nav>
             
@@ -285,9 +281,6 @@
             switchImageUrl = document.getElementById(`img${imgCounter}`).src;
             document.getElementById("imgBig").src = switchImageUrl;
         }
-
-      
-
         async function updateItem(category, item) {
 
             console.log('got updateItem');
